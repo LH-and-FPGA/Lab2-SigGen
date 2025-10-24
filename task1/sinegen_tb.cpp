@@ -15,11 +15,11 @@ int main(int argc, char **argv, char **env) {
     Verilated::traceEverOn(true);
     VerilatedVcdC* tfp = new VerilatedVcdC;
     sinegen->trace(tfp, 99);
-    tfp->open("counter.vcd");
+    tfp->open("sinegen.vcd");
 
     // init vbuddy
     if (vbdOpen() != 1) return -1;
-    vbdHeader("Lab 1: Counter");
+    vbdHeader("Lab 2: Sinegen");
     vbdSetMode(1);
 
     sinegen->clk = 1;
@@ -45,10 +45,17 @@ int main(int argc, char **argv, char **env) {
         vbdPlot(sinegen->dout, -240, 360);
 
         for (clk = 0; clk < 2; clk++) {
-            tfp->dump(2*i+clk);
+            // tfp->dump(2*i+clk);
             sinegen->clk = !sinegen->clk;
             sinegen->eval();
         }
+
+        if (vbdGetkey() == 'q') {
+            vbdClose();
+            tfp->close();
+            exit(0);
+        }
+        // i++;
     }
 
     vbdClose();
