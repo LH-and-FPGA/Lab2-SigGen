@@ -31,6 +31,8 @@ int main(int argc, char **argv, char **env) {
 
 
     while(true) {
+        // sinegen->incr = vbdValue();
+        // 这个更加有趣一点儿
         if (vbdFlag() == 1) {
             sinegen->rst = 1;
             if (vbdValue() > 10) {

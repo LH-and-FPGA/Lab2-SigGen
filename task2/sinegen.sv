@@ -15,7 +15,7 @@ module sinegen #(
     counter Counter(
         .rst(rst),
         .en(en),
-        .incr(incr),
+        .incr({{(COUNT_WIDTH-1){1'b0}}, 1'b1}),
         .clk(clk),
         .count(addr)
     );
