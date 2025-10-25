@@ -11,40 +11,41 @@ VL_ATTR_COLD void Vsinegen___024root__trace_init_sub__TOP__0(Vsinegen___024root*
     // Init
     const int c = vlSymsp->__Vm_baseCode;
     // Body
-    tracep->declBus(c+1,0,"incr",-1, VerilatedTraceSigDirection::INPUT, VerilatedTraceSigKind::WIRE, VerilatedTraceSigType::LOGIC, false,-1, 7,0);
-    tracep->declBit(c+2,0,"rst",-1, VerilatedTraceSigDirection::INPUT, VerilatedTraceSigKind::WIRE, VerilatedTraceSigType::LOGIC, false,-1);
-    tracep->declBit(c+3,0,"en",-1, VerilatedTraceSigDirection::INPUT, VerilatedTraceSigKind::WIRE, VerilatedTraceSigType::LOGIC, false,-1);
-    tracep->declBit(c+4,0,"clk",-1, VerilatedTraceSigDirection::INPUT, VerilatedTraceSigKind::WIRE, VerilatedTraceSigType::LOGIC, false,-1);
-    tracep->declBus(c+5,0,"dout1",-1, VerilatedTraceSigDirection::OUTPUT, VerilatedTraceSigKind::WIRE, VerilatedTraceSigType::LOGIC, false,-1, 7,0);
-    tracep->declBus(c+6,0,"dout2",-1, VerilatedTraceSigDirection::OUTPUT, VerilatedTraceSigKind::WIRE, VerilatedTraceSigType::LOGIC, false,-1, 7,0);
-    tracep->pushPrefix("sinegen", VerilatedTracePrefixType::SCOPE_MODULE);
-    tracep->declBus(c+9,0,"COUNT_WIDTH",-1, VerilatedTraceSigDirection::NONE, VerilatedTraceSigKind::PARAMETER, VerilatedTraceSigType::LOGIC, false,-1, 31,0);
-    tracep->declBus(c+9,0,"DATA_WIDTH",-1, VerilatedTraceSigDirection::NONE, VerilatedTraceSigKind::PARAMETER, VerilatedTraceSigType::LOGIC, false,-1, 31,0);
-    tracep->declBus(c+1,0,"incr",-1, VerilatedTraceSigDirection::INPUT, VerilatedTraceSigKind::WIRE, VerilatedTraceSigType::LOGIC, false,-1, 7,0);
-    tracep->declBit(c+2,0,"rst",-1, VerilatedTraceSigDirection::INPUT, VerilatedTraceSigKind::WIRE, VerilatedTraceSigType::LOGIC, false,-1);
-    tracep->declBit(c+3,0,"en",-1, VerilatedTraceSigDirection::INPUT, VerilatedTraceSigKind::WIRE, VerilatedTraceSigType::LOGIC, false,-1);
-    tracep->declBit(c+4,0,"clk",-1, VerilatedTraceSigDirection::INPUT, VerilatedTraceSigKind::WIRE, VerilatedTraceSigType::LOGIC, false,-1);
-    tracep->declBus(c+5,0,"dout1",-1, VerilatedTraceSigDirection::OUTPUT, VerilatedTraceSigKind::WIRE, VerilatedTraceSigType::LOGIC, false,-1, 7,0);
-    tracep->declBus(c+6,0,"dout2",-1, VerilatedTraceSigDirection::OUTPUT, VerilatedTraceSigKind::WIRE, VerilatedTraceSigType::LOGIC, false,-1, 7,0);
-    tracep->declBus(c+7,0,"addr",-1, VerilatedTraceSigDirection::NONE, VerilatedTraceSigKind::VAR, VerilatedTraceSigType::LOGIC, false,-1, 7,0);
-    tracep->pushPrefix("Counter", VerilatedTracePrefixType::SCOPE_MODULE);
-    tracep->declBus(c+9,0,"WIDTH",-1, VerilatedTraceSigDirection::NONE, VerilatedTraceSigKind::PARAMETER, VerilatedTraceSigType::LOGIC, false,-1, 31,0);
-    tracep->declBit(c+4,0,"clk",-1, VerilatedTraceSigDirection::INPUT, VerilatedTraceSigKind::WIRE, VerilatedTraceSigType::LOGIC, false,-1);
-    tracep->declBit(c+2,0,"rst",-1, VerilatedTraceSigDirection::INPUT, VerilatedTraceSigKind::WIRE, VerilatedTraceSigType::LOGIC, false,-1);
-    tracep->declBit(c+3,0,"en",-1, VerilatedTraceSigDirection::INPUT, VerilatedTraceSigKind::WIRE, VerilatedTraceSigType::LOGIC, false,-1);
-    tracep->declBus(c+10,0,"incr",-1, VerilatedTraceSigDirection::INPUT, VerilatedTraceSigKind::WIRE, VerilatedTraceSigType::LOGIC, false,-1, 7,0);
-    tracep->declBus(c+7,0,"count",-1, VerilatedTraceSigDirection::OUTPUT, VerilatedTraceSigKind::WIRE, VerilatedTraceSigType::LOGIC, false,-1, 7,0);
-    tracep->popPrefix();
-    tracep->pushPrefix("Rom", VerilatedTracePrefixType::SCOPE_MODULE);
-    tracep->declBus(c+9,0,"ADDRESS_WIDTH",-1, VerilatedTraceSigDirection::NONE, VerilatedTraceSigKind::PARAMETER, VerilatedTraceSigType::LOGIC, false,-1, 31,0);
-    tracep->declBus(c+9,0,"DATA_WIDTH",-1, VerilatedTraceSigDirection::NONE, VerilatedTraceSigKind::PARAMETER, VerilatedTraceSigType::LOGIC, false,-1, 31,0);
-    tracep->declBit(c+4,0,"clk",-1, VerilatedTraceSigDirection::INPUT, VerilatedTraceSigKind::WIRE, VerilatedTraceSigType::LOGIC, false,-1);
-    tracep->declBus(c+7,0,"addr1",-1, VerilatedTraceSigDirection::INPUT, VerilatedTraceSigKind::WIRE, VerilatedTraceSigType::LOGIC, false,-1, 7,0);
-    tracep->declBus(c+8,0,"addr2",-1, VerilatedTraceSigDirection::INPUT, VerilatedTraceSigKind::WIRE, VerilatedTraceSigType::LOGIC, false,-1, 7,0);
-    tracep->declBus(c+5,0,"dout1",-1, VerilatedTraceSigDirection::OUTPUT, VerilatedTraceSigKind::WIRE, VerilatedTraceSigType::LOGIC, false,-1, 7,0);
-    tracep->declBus(c+6,0,"dout2",-1, VerilatedTraceSigDirection::OUTPUT, VerilatedTraceSigKind::WIRE, VerilatedTraceSigType::LOGIC, false,-1, 7,0);
-    tracep->popPrefix();
-    tracep->popPrefix();
+    tracep->declBus(c+1,"incr", false,-1, 7,0);
+    tracep->declBit(c+2,"rst", false,-1);
+    tracep->declBit(c+3,"en", false,-1);
+    tracep->declBit(c+4,"clk", false,-1);
+    tracep->declBus(c+5,"cnt_incr", false,-1, 7,0);
+    tracep->declBus(c+6,"dout1", false,-1, 7,0);
+    tracep->declBus(c+7,"dout2", false,-1, 7,0);
+    tracep->pushNamePrefix("sinegen ");
+    tracep->declBus(c+10,"COUNT_WIDTH", false,-1, 31,0);
+    tracep->declBus(c+10,"DATA_WIDTH", false,-1, 31,0);
+    tracep->declBus(c+1,"incr", false,-1, 7,0);
+    tracep->declBit(c+2,"rst", false,-1);
+    tracep->declBit(c+3,"en", false,-1);
+    tracep->declBit(c+4,"clk", false,-1);
+    tracep->declBus(c+5,"cnt_incr", false,-1, 7,0);
+    tracep->declBus(c+6,"dout1", false,-1, 7,0);
+    tracep->declBus(c+7,"dout2", false,-1, 7,0);
+    tracep->declBus(c+8,"addr", false,-1, 7,0);
+    tracep->pushNamePrefix("Counter ");
+    tracep->declBus(c+10,"WIDTH", false,-1, 31,0);
+    tracep->declBit(c+4,"clk", false,-1);
+    tracep->declBit(c+2,"rst", false,-1);
+    tracep->declBit(c+3,"en", false,-1);
+    tracep->declBus(c+5,"incr", false,-1, 7,0);
+    tracep->declBus(c+8,"count", false,-1, 7,0);
+    tracep->popNamePrefix(1);
+    tracep->pushNamePrefix("Rom ");
+    tracep->declBus(c+10,"ADDRESS_WIDTH", false,-1, 31,0);
+    tracep->declBus(c+10,"DATA_WIDTH", false,-1, 31,0);
+    tracep->declBit(c+4,"clk", false,-1);
+    tracep->declBus(c+8,"addr1", false,-1, 7,0);
+    tracep->declBus(c+9,"addr2", false,-1, 7,0);
+    tracep->declBus(c+6,"dout1", false,-1, 7,0);
+    tracep->declBus(c+7,"dout2", false,-1, 7,0);
+    tracep->popNamePrefix(2);
 }
 
 VL_ATTR_COLD void Vsinegen___024root__trace_init_top(Vsinegen___024root* vlSelf, VerilatedVcd* tracep) {
@@ -83,29 +84,7 @@ VL_ATTR_COLD void Vsinegen___024root__trace_full_top_0(void* voidSelf, Verilated
 VL_ATTR_COLD void Vsinegen___024root__trace_full_sub_0(Vsinegen___024root* vlSelf, VerilatedVcd::Buffer* bufp) {
     if (false && vlSelf) {}  // Prevent unused
     Vsinegen__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    VL_DEBUG_IF(VL_DBG_MSGF("+    Vsinegen___024root__trace_const_0_sub_0\n"); );
-    // Init
-    uint32_t* const oldp VL_ATTR_UNUSED = bufp->oldp(vlSymsp->__Vm_baseCode);
-    // Body
-    bufp->fullIData(oldp+9,(8U),32);
-    bufp->fullCData(oldp+10,(1U),8);
-}
-
-VL_ATTR_COLD void Vsinegen___024root__trace_full_0_sub_0(Vsinegen___024root* vlSelf, VerilatedVcd::Buffer* bufp);
-
-VL_ATTR_COLD void Vsinegen___024root__trace_full_0(void* voidSelf, VerilatedVcd::Buffer* bufp) {
-    VL_DEBUG_IF(VL_DBG_MSGF("+    Vsinegen___024root__trace_full_0\n"); );
-    // Init
-    Vsinegen___024root* const __restrict vlSelf VL_ATTR_UNUSED = static_cast<Vsinegen___024root*>(voidSelf);
-    Vsinegen__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    // Body
-    Vsinegen___024root__trace_full_0_sub_0((&vlSymsp->TOP), bufp);
-}
-
-VL_ATTR_COLD void Vsinegen___024root__trace_full_0_sub_0(Vsinegen___024root* vlSelf, VerilatedVcd::Buffer* bufp) {
-    if (false && vlSelf) {}  // Prevent unused
-    Vsinegen__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    VL_DEBUG_IF(VL_DBG_MSGF("+    Vsinegen___024root__trace_full_0_sub_0\n"); );
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vsinegen___024root__trace_full_sub_0\n"); );
     // Init
     uint32_t* const oldp VL_ATTR_UNUSED = bufp->oldp(vlSymsp->__Vm_baseCode);
     // Body
@@ -113,10 +92,11 @@ VL_ATTR_COLD void Vsinegen___024root__trace_full_0_sub_0(Vsinegen___024root* vlS
     bufp->fullBit(oldp+2,(vlSelf->rst));
     bufp->fullBit(oldp+3,(vlSelf->en));
     bufp->fullBit(oldp+4,(vlSelf->clk));
-    bufp->fullCData(oldp+5,(vlSelf->dout1),8);
-    bufp->fullCData(oldp+6,(vlSelf->dout2),8);
-    bufp->fullCData(oldp+7,(vlSelf->sinegen__DOT__addr),8);
-    bufp->fullCData(oldp+8,((0xffU & ((IData)(vlSelf->sinegen__DOT__addr) 
+    bufp->fullCData(oldp+5,(vlSelf->cnt_incr),8);
+    bufp->fullCData(oldp+6,(vlSelf->dout1),8);
+    bufp->fullCData(oldp+7,(vlSelf->dout2),8);
+    bufp->fullCData(oldp+8,(vlSelf->sinegen__DOT__addr),8);
+    bufp->fullCData(oldp+9,((0xffU & ((IData)(vlSelf->sinegen__DOT__addr) 
                                       + (IData)(vlSelf->incr)))),8);
-    bufp->fullIData(oldp+9,(8U),32);
+    bufp->fullIData(oldp+10,(8U),32);
 }

@@ -16,8 +16,8 @@ VL_INLINE_OPT void Vsinegen___024root___sequent__TOP__0(Vsinegen___024root* vlSe
         vlSelf->__Vdly__sinegen__DOT__addr = 0U;
     } else if (vlSelf->en) {
         vlSelf->__Vdly__sinegen__DOT__addr = (0xffU 
-                                              & ((IData)(1U) 
-                                                 + (IData)(vlSelf->sinegen__DOT__addr)));
+                                              & ((IData)(vlSelf->sinegen__DOT__addr) 
+                                                 + (IData)(vlSelf->cnt_incr)));
     }
 }
 

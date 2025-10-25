@@ -20,18 +20,28 @@ int main(int argc, char **argv, char **env) {
     // init vbuddy
     if (vbdOpen() != 1) return -1;
     vbdHeader("Lab 2: Sinegen");
-    vbdSetMode(1);
+    vbdSetMode(0);
 
     sinegen->clk = 1;
     sinegen->en = 1;
     sinegen->rst = 0;
     sinegen->incr = 1;
+    sinegen->cnt_incr = 5;
 
-    int half_cyc_counter = 0;
-
+    int cyc_counter = 0;
 
     while(true) {
-        sinegen->incr = vbdValue();
+        vbdCycle(cyc_counter++);
+        if (vbdFlag() == 0) {
+            sinegen->incr = vbdValue();
+        } else {
+            if (vbdValue() > 20) {
+                sinegen->cnt_incr = 20;
+            } else {
+                sinegen->cnt_incr = vbdValue();
+            }
+        }
+        // sinegen->incr = vbdValue();
 
         vbdPlot(sinegen->dout1, -240, 360);
         vbdPlot(sinegen->dout2, -240, 360);

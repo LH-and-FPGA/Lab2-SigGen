@@ -27,10 +27,11 @@ void Vsinegen___024root__trace_chg_sub_0(Vsinegen___024root* vlSelf, VerilatedVc
     bufp->chgBit(oldp+1,(vlSelf->rst));
     bufp->chgBit(oldp+2,(vlSelf->en));
     bufp->chgBit(oldp+3,(vlSelf->clk));
-    bufp->chgCData(oldp+4,(vlSelf->dout1),8);
-    bufp->chgCData(oldp+5,(vlSelf->dout2),8);
-    bufp->chgCData(oldp+6,(vlSelf->sinegen__DOT__addr),8);
-    bufp->chgCData(oldp+7,((0xffU & ((IData)(vlSelf->sinegen__DOT__addr) 
+    bufp->chgCData(oldp+4,(vlSelf->cnt_incr),8);
+    bufp->chgCData(oldp+5,(vlSelf->dout1),8);
+    bufp->chgCData(oldp+6,(vlSelf->dout2),8);
+    bufp->chgCData(oldp+7,(vlSelf->sinegen__DOT__addr),8);
+    bufp->chgCData(oldp+8,((0xffU & ((IData)(vlSelf->sinegen__DOT__addr) 
                                      + (IData)(vlSelf->incr)))),8);
 }
 

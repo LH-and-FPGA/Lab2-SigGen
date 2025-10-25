@@ -15,6 +15,7 @@ Vsinegen::Vsinegen(VerilatedContext* _vcontextp__, const char* _vcname__)
     , clk{vlSymsp->TOP.clk}
     , incr{vlSymsp->TOP.incr}
     , en{vlSymsp->TOP.en}
+    , cnt_incr{vlSymsp->TOP.cnt_incr}
     , dout1{vlSymsp->TOP.dout1}
     , dout2{vlSymsp->TOP.dout2}
     , rootp{&(vlSymsp->TOP)}

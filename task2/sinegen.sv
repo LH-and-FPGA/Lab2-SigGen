@@ -6,6 +6,7 @@ module sinegen #(
     input logic rst,
     input logic en,
     input logic clk,
+    input logic [COUNT_WIDTH-1:0] cnt_incr,
     output logic [DATA_WIDTH-1:0] dout1,
     output logic [DATA_WIDTH-1:0] dout2
 );
@@ -15,7 +16,7 @@ module sinegen #(
     counter Counter(
         .rst(rst),
         .en(en),
-        .incr({{(COUNT_WIDTH-1){1'b0}}, 1'b1}),
+        .incr(cnt_incr),
         .clk(clk),
         .count(addr)
     );

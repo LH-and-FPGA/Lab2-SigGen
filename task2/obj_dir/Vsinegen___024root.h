@@ -17,6 +17,7 @@ class Vsinegen___024root final : public VerilatedModule {
     VL_IN8(clk,0,0);
     VL_IN8(incr,7,0);
     VL_IN8(en,0,0);
+    VL_IN8(cnt_incr,7,0);
     VL_OUT8(dout1,7,0);
     VL_OUT8(dout2,7,0);
     CData/*7:0*/ sinegen__DOT__addr;
