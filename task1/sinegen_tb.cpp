@@ -38,6 +38,7 @@ int main(int argc, char **argv, char **env) {
             } else {
                 sinegen->incr = vbdValue();
             }
+            // 无意中完成的Task 1 Challenge
         } else {
             sinegen->rst = 0;
         }
