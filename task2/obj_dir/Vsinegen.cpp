@@ -1,7 +1,8 @@
 // Verilated -*- C++ -*-
 // DESCRIPTION: Verilator output: Model implementation (design independent parts)
 
-#include "Vsinegen__pch.h"
+#include "Vsinegen.h"
+#include "Vsinegen__Syms.h"
 #include "verilated_vcd_c.h"
 
 //============================================================
@@ -35,15 +36,27 @@ Vsinegen::~Vsinegen() {
 }
 
 //============================================================
-// Evaluation function
+// Evaluation loop
 
-#ifdef VL_DEBUG
-void Vsinegen___024root___eval_debug_assertions(Vsinegen___024root* vlSelf);
-#endif  // VL_DEBUG
-void Vsinegen___024root___eval_static(Vsinegen___024root* vlSelf);
 void Vsinegen___024root___eval_initial(Vsinegen___024root* vlSelf);
 void Vsinegen___024root___eval_settle(Vsinegen___024root* vlSelf);
 void Vsinegen___024root___eval(Vsinegen___024root* vlSelf);
+#ifdef VL_DEBUG
+void Vsinegen___024root___eval_debug_assertions(Vsinegen___024root* vlSelf);
+#endif  // VL_DEBUG
+void Vsinegen___024root___final(Vsinegen___024root* vlSelf);
+
+static void _eval_initial_loop(Vsinegen__Syms* __restrict vlSymsp) {
+    vlSymsp->__Vm_didInit = true;
+    Vsinegen___024root___eval_initial(&(vlSymsp->TOP));
+    // Evaluate till stable
+    vlSymsp->__Vm_activity = true;
+    do {
+        VL_DEBUG_IF(VL_DBG_MSGF("+ Initial loop\n"););
+        Vsinegen___024root___eval_settle(&(vlSymsp->TOP));
+        Vsinegen___024root___eval(&(vlSymsp->TOP));
+    } while (0);
+}
 
 void Vsinegen::eval_step() {
     VL_DEBUG_IF(VL_DBG_MSGF("+++++TOP Evaluate Vsinegen::eval_step\n"); );
@@ -51,28 +64,15 @@ void Vsinegen::eval_step() {
     // Debug assertions
     Vsinegen___024root___eval_debug_assertions(&(vlSymsp->TOP));
 #endif  // VL_DEBUG
+    // Initialize
+    if (VL_UNLIKELY(!vlSymsp->__Vm_didInit)) _eval_initial_loop(vlSymsp);
+    // Evaluate till stable
     vlSymsp->__Vm_activity = true;
-    vlSymsp->__Vm_deleter.deleteAll();
-    if (VL_UNLIKELY(!vlSymsp->__Vm_didInit)) {
-        vlSymsp->__Vm_didInit = true;
-        VL_DEBUG_IF(VL_DBG_MSGF("+ Initial\n"););
-        Vsinegen___024root___eval_static(&(vlSymsp->TOP));
-        Vsinegen___024root___eval_initial(&(vlSymsp->TOP));
-        Vsinegen___024root___eval_settle(&(vlSymsp->TOP));
-    }
-    VL_DEBUG_IF(VL_DBG_MSGF("+ Eval\n"););
-    Vsinegen___024root___eval(&(vlSymsp->TOP));
+    do {
+        VL_DEBUG_IF(VL_DBG_MSGF("+ Clock loop\n"););
+        Vsinegen___024root___eval(&(vlSymsp->TOP));
+    } while (0);
     // Evaluate cleanup
-    Verilated::endOfEval(vlSymsp->__Vm_evalMsgQp);
-}
-
-//============================================================
-// Events and timing
-bool Vsinegen::eventsPending() { return false; }
-
-uint64_t Vsinegen::nextTimeSlot() {
-    VL_FATAL_MT(__FILE__, __LINE__, "", "%Error: No delays in the design");
-    return 0;
 }
 
 //============================================================
@@ -85,10 +85,8 @@ const char* Vsinegen::name() const {
 //============================================================
 // Invoke final blocks
 
-void Vsinegen___024root___eval_final(Vsinegen___024root* vlSelf);
-
 VL_ATTR_COLD void Vsinegen::final() {
-    Vsinegen___024root___eval_final(&(vlSymsp->TOP));
+    Vsinegen___024root___final(&(vlSymsp->TOP));
 }
 
 //============================================================
@@ -97,18 +95,12 @@ VL_ATTR_COLD void Vsinegen::final() {
 const char* Vsinegen::hierName() const { return vlSymsp->name(); }
 const char* Vsinegen::modelName() const { return "Vsinegen"; }
 unsigned Vsinegen::threads() const { return 1; }
-void Vsinegen::prepareClone() const { contextp()->prepareClone(); }
-void Vsinegen::atClone() const {
-    contextp()->threadPoolpOnClone();
-}
 std::unique_ptr<VerilatedTraceConfig> Vsinegen::traceConfig() const {
     return std::unique_ptr<VerilatedTraceConfig>{new VerilatedTraceConfig{false, false, false}};
 };
 
 //============================================================
 // Trace configuration
-
-void Vsinegen___024root__trace_decl_types(VerilatedVcd* tracep);
 
 void Vsinegen___024root__trace_init_top(Vsinegen___024root* vlSelf, VerilatedVcd* tracep);
 
@@ -121,18 +113,16 @@ VL_ATTR_COLD static void trace_init(void* voidSelf, VerilatedVcd* tracep, uint32
             "Turning on wave traces requires Verilated::traceEverOn(true) call before time 0.");
     }
     vlSymsp->__Vm_baseCode = code;
-    tracep->pushPrefix(std::string{vlSymsp->name()}, VerilatedTracePrefixType::SCOPE_MODULE);
-    Vsinegen___024root__trace_decl_types(tracep);
+    tracep->scopeEscape(' ');
+    tracep->pushNamePrefix(std::string{vlSymsp->name()} + ' ');
     Vsinegen___024root__trace_init_top(vlSelf, tracep);
-    tracep->popPrefix();
+    tracep->popNamePrefix();
+    tracep->scopeEscape('.');
 }
 
 VL_ATTR_COLD void Vsinegen___024root__trace_register(Vsinegen___024root* vlSelf, VerilatedVcd* tracep);
 
 VL_ATTR_COLD void Vsinegen::trace(VerilatedVcdC* tfp, int levels, int options) {
-    if (tfp->isOpen()) {
-        vl_fatal(__FILE__, __LINE__, __FILE__,"'Vsinegen::trace()' shall not be called after 'VerilatedVcdC::open()'.");
-    }
     if (false && levels && options) {}  // Prevent unused
     tfp->spTrace()->addModel(this);
     tfp->spTrace()->addInitCb(&trace_init, &(vlSymsp->TOP));

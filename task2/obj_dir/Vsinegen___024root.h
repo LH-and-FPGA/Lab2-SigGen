@@ -7,10 +7,9 @@
 
 #include "verilated.h"
 
-
 class Vsinegen__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vsinegen___024root final : public VerilatedModule {
+class Vsinegen___024root final : public VerilatedModule {
   public:
 
     // DESIGN SPECIFIC STATE
@@ -22,25 +21,21 @@ class alignas(VL_CACHE_LINE_BYTES) Vsinegen___024root final : public VerilatedMo
     VL_OUT8(dout2,7,0);
     CData/*7:0*/ sinegen__DOT__addr;
     CData/*7:0*/ __Vdly__sinegen__DOT__addr;
-    CData/*0:0*/ __Vtrigprevexpr___TOP__clk__0;
-    CData/*0:0*/ __Vtrigprevexpr___TOP__rst__0;
-    CData/*0:0*/ __VactContinue;
-    IData/*31:0*/ __VactIterCount;
+    CData/*0:0*/ __Vclklast__TOP__clk;
+    CData/*0:0*/ __Vclklast__TOP__rst;
     VlUnpacked<CData/*7:0*/, 256> sinegen__DOT__Rom__DOT__rom_array;
-    VlTriggerVec<2> __VactTriggered;
-    VlTriggerVec<2> __VnbaTriggered;
 
     // INTERNAL VARIABLES
     Vsinegen__Syms* const vlSymsp;
 
     // CONSTRUCTORS
-    Vsinegen___024root(Vsinegen__Syms* symsp, const char* v__name);
+    Vsinegen___024root(Vsinegen__Syms* symsp, const char* name);
     ~Vsinegen___024root();
     VL_UNCOPYABLE(Vsinegen___024root);
 
     // INTERNAL METHODS
     void __Vconfigure(bool first);
-};
+} VL_ATTR_ALIGNED(VL_CACHE_LINE_BYTES);
 
 
 #endif  // guard

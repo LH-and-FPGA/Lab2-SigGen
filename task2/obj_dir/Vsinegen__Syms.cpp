@@ -1,7 +1,7 @@
 // Verilated -*- C++ -*-
 // DESCRIPTION: Verilator output: Symbol table implementation internals
 
-#include "Vsinegen__pch.h"
+#include "Vsinegen__Syms.h"
 #include "Vsinegen.h"
 #include "Vsinegen___024root.h"
 

@@ -55,9 +55,8 @@ VL_ATTR_COLD void Vsinegen___024root__trace_init_top(Vsinegen___024root* vlSelf,
     Vsinegen___024root__trace_init_sub__TOP__0(vlSelf, tracep);
 }
 
-VL_ATTR_COLD void Vsinegen___024root__trace_const_0(void* voidSelf, VerilatedVcd::Buffer* bufp);
-VL_ATTR_COLD void Vsinegen___024root__trace_full_0(void* voidSelf, VerilatedVcd::Buffer* bufp);
-void Vsinegen___024root__trace_chg_0(void* voidSelf, VerilatedVcd::Buffer* bufp);
+VL_ATTR_COLD void Vsinegen___024root__trace_full_top_0(void* voidSelf, VerilatedVcd::Buffer* bufp);
+void Vsinegen___024root__trace_chg_top_0(void* voidSelf, VerilatedVcd::Buffer* bufp);
 void Vsinegen___024root__trace_cleanup(void* voidSelf, VerilatedVcd* /*unused*/);
 
 VL_ATTR_COLD void Vsinegen___024root__trace_register(Vsinegen___024root* vlSelf, VerilatedVcd* tracep) {
@@ -65,24 +64,23 @@ VL_ATTR_COLD void Vsinegen___024root__trace_register(Vsinegen___024root* vlSelf,
     Vsinegen__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vsinegen___024root__trace_register\n"); );
     // Body
-    tracep->addConstCb(&Vsinegen___024root__trace_const_0, 0U, vlSelf);
-    tracep->addFullCb(&Vsinegen___024root__trace_full_0, 0U, vlSelf);
-    tracep->addChgCb(&Vsinegen___024root__trace_chg_0, 0U, vlSelf);
+    tracep->addFullCb(&Vsinegen___024root__trace_full_top_0, vlSelf);
+    tracep->addChgCb(&Vsinegen___024root__trace_chg_top_0, vlSelf);
     tracep->addCleanupCb(&Vsinegen___024root__trace_cleanup, vlSelf);
 }
 
-VL_ATTR_COLD void Vsinegen___024root__trace_const_0_sub_0(Vsinegen___024root* vlSelf, VerilatedVcd::Buffer* bufp);
+VL_ATTR_COLD void Vsinegen___024root__trace_full_sub_0(Vsinegen___024root* vlSelf, VerilatedVcd::Buffer* bufp);
 
-VL_ATTR_COLD void Vsinegen___024root__trace_const_0(void* voidSelf, VerilatedVcd::Buffer* bufp) {
-    VL_DEBUG_IF(VL_DBG_MSGF("+    Vsinegen___024root__trace_const_0\n"); );
+VL_ATTR_COLD void Vsinegen___024root__trace_full_top_0(void* voidSelf, VerilatedVcd::Buffer* bufp) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vsinegen___024root__trace_full_top_0\n"); );
     // Init
     Vsinegen___024root* const __restrict vlSelf VL_ATTR_UNUSED = static_cast<Vsinegen___024root*>(voidSelf);
     Vsinegen__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     // Body
-    Vsinegen___024root__trace_const_0_sub_0((&vlSymsp->TOP), bufp);
+    Vsinegen___024root__trace_full_sub_0((&vlSymsp->TOP), bufp);
 }
 
-VL_ATTR_COLD void Vsinegen___024root__trace_const_0_sub_0(Vsinegen___024root* vlSelf, VerilatedVcd::Buffer* bufp) {
+VL_ATTR_COLD void Vsinegen___024root__trace_full_sub_0(Vsinegen___024root* vlSelf, VerilatedVcd::Buffer* bufp) {
     if (false && vlSelf) {}  // Prevent unused
     Vsinegen__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vsinegen___024root__trace_const_0_sub_0\n"); );
@@ -118,6 +116,7 @@ VL_ATTR_COLD void Vsinegen___024root__trace_full_0_sub_0(Vsinegen___024root* vlS
     bufp->fullCData(oldp+5,(vlSelf->dout1),8);
     bufp->fullCData(oldp+6,(vlSelf->dout2),8);
     bufp->fullCData(oldp+7,(vlSelf->sinegen__DOT__addr),8);
-    bufp->fullCData(oldp+8,((0xffU & ((IData)(vlSelf->incr) 
-                                      + (IData)(vlSelf->sinegen__DOT__addr)))),8);
+    bufp->fullCData(oldp+8,((0xffU & ((IData)(vlSelf->sinegen__DOT__addr) 
+                                      + (IData)(vlSelf->incr)))),8);
+    bufp->fullIData(oldp+9,(8U),32);
 }
